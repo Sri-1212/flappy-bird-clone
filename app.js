@@ -395,8 +395,10 @@ class MainGameScene extends Phaser.Scene {
 
         this.score = 0;
         this.highScore = parseInt(localStorage.getItem('flappy_highscore') || '0', 10);
-        this.pipeSpeed = 220;
-        this.pipeGap = 190;
+        
+        // Pacing & Difficulty Calibration
+        this.pipeSpeed = 170; // Smooth relaxed scrolling speed
+        this.pipeGap = 240;   // Generous vertical opening between pipes
         this.pipeSpawnTimer = null;
         this.gameWidth = this.scale.width;
         this.gameHeight = this.scale.height;
@@ -487,7 +489,7 @@ class MainGameScene extends Phaser.Scene {
             .setCollideWorldBounds(false);
 
         // Precise circular hitbox
-        this.bird.body.setCircle(14, 8, 4);
+        this.bird.body.setCircle(13, 9, 5);
         this.bird.body.allowGravity = false;
 
         // Collision detection
@@ -934,11 +936,12 @@ class MainGameScene extends Phaser.Scene {
     startPipeSpawner() {
         if (this.pipeSpawnTimer) this.pipeSpawnTimer.remove();
 
-        this.time.delayedCall(1200, () => {
+        // Spawn first pipe after a comfortable initial runway
+        this.time.delayedCall(1600, () => {
             if (this.currentState === this.STATE.PLAYING) {
                 this.spawnPipePair();
                 this.pipeSpawnTimer = this.time.addEvent({
-                    delay: 1650,
+                    delay: 2500, // Generous spacing between consecutive obstacles
                     callback: this.spawnPipePair,
                     callbackScope: this,
                     loop: true
@@ -955,11 +958,11 @@ class MainGameScene extends Phaser.Scene {
         const spawnX = currentW + 60;
         const playableHeight = currentH - this.groundHeight;
 
-        // Gap calculations with safety margins
-        const minGapY = 130;
-        const maxGapY = playableHeight - 130;
+        // Gap calculations with comfortable safety margins
+        const minGapY = 160;
+        const maxGapY = playableHeight - 160;
         const gapCenterY = Phaser.Math.Between(minGapY, maxGapY);
-        const gapSize = Phaser.Math.Clamp(this.pipeGap, 170, 220);
+        const gapSize = Phaser.Math.Clamp(this.pipeGap, 230, 260);
 
         // Top Pipe (Inverted)
         const topPipeY = gapCenterY - gapSize / 2;
@@ -1085,7 +1088,7 @@ class MainGameScene extends Phaser.Scene {
         // Gameplay Update Logic
         if (this.currentState === this.STATE.PLAYING) {
             if (this.bird.body.velocity.y > 60) {
-                this.bird.angle = Phaser.Math.Clamp(this.bird.angle + 2.5, -25, 75);
+                this.bird.angle = Phaser.Math.Clamp(this.bird.angle + 2.5, -20, 75);
             }
 
             if (this.bird.y < 0) {
