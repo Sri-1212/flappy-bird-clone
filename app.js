@@ -906,13 +906,13 @@ class MainGameScene extends Phaser.Scene {
     flap() {
         if (this.currentState !== this.STATE.PLAYING) return;
 
-        this.bird.setVelocityY(-370);
+        this.bird.setVelocityY(-270);
         soundManager.playFlap();
 
         // Fast upward tilt
         this.tweens.add({
             targets: this.bird,
-            angle: -22,
+            angle: -20,
             duration: 110,
             ease: 'Power1'
         });
@@ -920,7 +920,7 @@ class MainGameScene extends Phaser.Scene {
         // Squash and stretch bounce
         this.tweens.add({
             targets: this.bird,
-            scaleX: 1.45,
+            scaleX: 1.4,
             scaleY: 1.15,
             duration: 80,
             yoyo: true,
@@ -1203,7 +1203,7 @@ const config = {
     physics: {
         default: 'arcade',
         arcade: {
-            gravity: { y: 1050 },
+            gravity: { y: 650 },
             debug: false
         }
     },
