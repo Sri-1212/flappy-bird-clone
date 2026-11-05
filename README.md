@@ -18,7 +18,7 @@ A modernized, animated, and responsive web clone of the iconic **Flappy Bird** g
   - Persistent High Score tracking saved to `localStorage`.
   - Floating `+1` score popups on clearing pipe obstacles.
 - ** Built-in Retro Sound Effects**:
-  - Procedurally synthesized audio via Web Audio API (flap swoosh, coin ding, impact hit, fall whistle, and UI clicks).
+  - Procedurally synthesized audio via Web Audio API (flap swoosh, coin ding, impact hit, fall whistle, and UI clicks)..
   - Quick audio mute/unmute toggle (`🔊` / `🔇`).
 - ** Smooth Physics**:
   - Balanced gravity and floaty flap velocity for satisfying and responsive gameplay.
