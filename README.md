@@ -13,7 +13,7 @@ A modernized, animated, and responsive web clone of the iconic **Flappy Bird** g
   - Flap wind trail particles, screen shake, red flash, and feather explosion bursts on collision.
 - **Interactive Start & Game Over UI**:
   - Glowing, pulsing **START GAME** button with hover animations.
- ssa - Drop-in Game Over scoreboard with score roll-up counter.
+  - Drop-in Game Over scoreboard with score roll-up counter.
   - Tiered Medal System: 🥉 Bronze, 🥈 Silver, 🥇 Gold, and 💎 Platinum.
   - Persistent High Score tracking saved to `localStorage`.
   - Floating `+1` score popups on clearing pipe obstacles.
